@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 const App2 = () => {
     const [value, setValue] = useState();
     const [repos, setRepos] = useState();
+    const fetched = null;
   
-    const handleClick = async () => {
-      // fetch
-      const fetched = await axios.get(`https://api.github.com/users/${value}/repos`);
-      setRepos(fetched.data);
-      console.log(fetched);
+    const KEY = "";
+const baseParams = {
+  part: "snippet",
+  maxResults: 5,
+  key: KEY
+};
 
-    }
+    const handleClick = async () => {
+      // fetching data
+        return new Promise(function(resolve, reject) {
+         const fetched = axios.get(`https://www.googleapis.com/youtube/v3`,baseParams).then(response => {
+            resolve(response);
+          });
+        }
+        
+        
+      
+      );
+      setRepos(fetched.data);
+      console.log(fetched.data);
+
+    };
+      
+  
 
     
   const handleSubmit = (event) => {
